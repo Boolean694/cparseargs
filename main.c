@@ -10,16 +10,16 @@ char ** parse_args( char * line ) {
   char * inst;
   int q = 0;
   while(inst != NULL) {
-    printf("begin while\n");
     inst = strsep(&line, " ");
-    printf("next line\n");
+    printf("split next line\n");
     ret[q] = inst;
     q++;
   }
+  printf("Done parsing!\n\n");
   return ret;
 }
 
 int main() {
-  char ** bro = parse_args("ls -a -l");
+  char ** bro = parse_args(strdup("ls -a -l"));
   execvp(bro[0],bro);
 }
